@@ -7,17 +7,21 @@ import {
 } from "react-router-dom";
 import './index.css'
 import Header from './components/Header.jsx';
+import JobCategory from './components/JobCategory.jsx';
+import Home from './components/Home.jsx';
+import { getFeaturedJobs as getFeaturedJobs } from './loader/getFeaturedJobs.js';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    loader: ()=>fetch('categories.json'),
     children: [
       {
         path: '/',
-        element: <Header></Header>
-      }
+        element: <Home></Home>,
+      },
     ]
   },
 ]);
